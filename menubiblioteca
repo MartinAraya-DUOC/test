@@ -1,0 +1,19 @@
+import biblioteca as bibli
+
+libros = {}
+
+opc = ''
+while opc != '5':
+    opc = bibli.menu()
+    if opc == '1':
+        libros = bibli.agregar_libro(libros)
+    elif opc == '2':
+        bibli.ver_libro(libros)
+    elif opc == '3':
+        libros = bibli.modificar_libro(libros)
+    elif opc == '4':
+        libros = bibli.eliminar_libro(libros)
+    elif opc == '5':
+        print('Programa terminado.')
+    else:
+        print('Opción no valida.')
