@@ -1,0 +1,49 @@
+def menu():
+    print('\n MENU')
+    print('~'*10)
+    print('''
+1. Agregar libro [título, autor, año]
+2. Ver información de un libro [buscar por título]
+3. Modificar año de publicación [buscar por título]
+4. Eliminar libro [por título]
+5. Salir
+ ''' )
+    opcion = input('Ingrese su opcion: ')
+    return opcion
+
+def agregar_libro(libros):
+    while True:
+        titulo = input('Ingrese el nombre del libro: ').lower()
+        if titulo in libros:
+            print('Ya existe este producto.')
+        else:
+            autor = input('Ingrese autor del libro:').lower()
+            año = int(input('Ingrese año del libro: '))
+            libros[titulo] = [titulo , autor , año]
+            print('Producto agregado')
+        return libros
+
+def ver_libro(libros):
+    titulo = input('Libro a buscar: ')
+    if titulo in libros:
+        print(f'Titulo: {titulo}, Autor: {libros[titulo][1]}, Año: {libros[titulo][2]}')
+    else:
+        print('Producto no encontrado.')
+
+def modificar_libro(libros):
+    titulo = input('Ingrese el nombre del libro que quiere modificar: ').lower()
+    if titulo in libros:
+        nuevo_año = int(input('Nuevo año de publicación: '))
+        libros[titulo][2] = nuevo_año
+    else:
+        print('producto no encontrado')
+    return libros
+
+def eliminar_libro(libros):
+    titulo = input('Ingrese libro que quiere eliminar: ')
+    if titulo in libros:
+        del libros[titulo]
+        print('Libro eliminado.')
+    else:
+        print('Producto no encontrado.')
+    return libros
